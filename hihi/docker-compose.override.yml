@@ -2,10 +2,6 @@ version: '3.4'
 
 services:
   mongodbwdocker2:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "5000:8080"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      
