@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+
+  mongodbwdocker2:
+    image: jnilssonn/mongodbwdocker2:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+    - '8080'
+    - '8081'
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - mynetwork
+    
+
+networks:
+  mynetwork:
+    driver: bridge   
+
