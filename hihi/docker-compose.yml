@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   mongodbwdocker2:
-    image: jnilssonn/mongodbwdocker2:latest
+    image: jnilssonn/910039c7cde9:latest
     build:
       context: .
       dockerfile: ./Dockerfile
