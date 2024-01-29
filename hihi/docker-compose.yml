@@ -20,6 +20,20 @@ services:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - mynetwork
+  
+  
+  react:
+    image: jnilssonn/reactapp1:latest
+    volumes:
+     - ./src:/app/src
+    ports:
+     - 3000:3000
+    stdin_open: true
+    environment:
+     - CHOKIDAR_USEPOLLING=true
+    command: npm start
+    networks:
+     - mynetwork
 
 networks:
   mynetwork:
