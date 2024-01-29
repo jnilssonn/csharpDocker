@@ -22,3 +22,11 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MongoDBwDocker2.dll"]
+
+FROM node:20.10.0
+WORKDIR /app/React/react-mui-template
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD [ "npm", "start" ]
